@@ -1,0 +1,23 @@
+"""
+logger.py — Système de logs structurés
+"""
+
+import logging
+import sys
+from datetime import datetime
+
+
+def get_logger(name: str = "scoring_industriel") -> logging.Logger:
+    logger = logging.getLogger(name)
+    if not logger.handlers:
+        handler = logging.StreamHandler(sys.stdout)
+        handler.setFormatter(logging.Formatter(
+            "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S"
+        ))
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+    return logger
+
+
+logger = get_logger()

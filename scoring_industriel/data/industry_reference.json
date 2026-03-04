@@ -1,0 +1,144 @@
+{
+  "version": "2.0",
+  "description": "Référentiel industriel 4.0 — Benchmarks sectoriels et normes IARD",
+  "last_updated": "2026-03",
+
+  "secteurs": {
+    "automobile": {
+      "label": "Automobile",
+      "mtbf_benchmark": 2200,
+      "mttr_benchmark": 3.5,
+      "taux_automatisation_moyen": 0.78,
+      "dependance_production_typique": "Critique",
+      "risque_cyber_niveau": "Élevé",
+      "coefficient_perte_exploitation": 1.4
+    },
+    "aeronautique": {
+      "label": "Aéronautique",
+      "mtbf_benchmark": 3500,
+      "mttr_benchmark": 2.8,
+      "taux_automatisation_moyen": 0.72,
+      "dependance_production_typique": "Critique",
+      "risque_cyber_niveau": "Critique",
+      "coefficient_perte_exploitation": 1.8
+    },
+    "agroalimentaire": {
+      "label": "Agroalimentaire",
+      "mtbf_benchmark": 1800,
+      "mttr_benchmark": 4.2,
+      "taux_automatisation_moyen": 0.55,
+      "dependance_production_typique": "Moyen",
+      "risque_cyber_niveau": "Modéré",
+      "coefficient_perte_exploitation": 1.2
+    },
+    "chimie_pharma": {
+      "label": "Chimie / Pharma",
+      "mtbf_benchmark": 2800,
+      "mttr_benchmark": 3.0,
+      "taux_automatisation_moyen": 0.68,
+      "dependance_production_typique": "Critique",
+      "risque_cyber_niveau": "Élevé",
+      "coefficient_perte_exploitation": 1.6
+    },
+    "metalurgie": {
+      "label": "Métallurgie",
+      "mtbf_benchmark": 1600,
+      "mttr_benchmark": 5.5,
+      "taux_automatisation_moyen": 0.48,
+      "dependance_production_typique": "Moyen",
+      "risque_cyber_niveau": "Modéré",
+      "coefficient_perte_exploitation": 1.1
+    },
+    "electronique": {
+      "label": "Électronique",
+      "mtbf_benchmark": 3000,
+      "mttr_benchmark": 2.5,
+      "taux_automatisation_moyen": 0.82,
+      "dependance_production_typique": "Critique",
+      "risque_cyber_niveau": "Critique",
+      "coefficient_perte_exploitation": 1.7
+    },
+    "textile": {
+      "label": "Textile",
+      "mtbf_benchmark": 1200,
+      "mttr_benchmark": 6.0,
+      "taux_automatisation_moyen": 0.38,
+      "dependance_production_typique": "Faible",
+      "risque_cyber_niveau": "Faible",
+      "coefficient_perte_exploitation": 0.9
+    },
+    "btp": {
+      "label": "BTP",
+      "mtbf_benchmark": 1400,
+      "mttr_benchmark": 5.0,
+      "taux_automatisation_moyen": 0.30,
+      "dependance_production_typique": "Faible",
+      "risque_cyber_niveau": "Faible",
+      "coefficient_perte_exploitation": 0.8
+    },
+    "autre": {
+      "label": "Autre",
+      "mtbf_benchmark": 2000,
+      "mttr_benchmark": 4.5,
+      "taux_automatisation_moyen": 0.50,
+      "dependance_production_typique": "Moyen",
+      "risque_cyber_niveau": "Modéré",
+      "coefficient_perte_exploitation": 1.0
+    }
+  },
+
+  "profils_industriels": {
+    "industrie_4_avance": {
+      "label": "Industrie 4.0 Avancé",
+      "score_min": 75,
+      "score_max": 100,
+      "description": "Intégration digitale complète, maintenance prédictive IA, CPS sécurisé, résilience opérationnelle élevée.",
+      "couleur": "#10b981",
+      "recommandation_souscription": "Conditions standard — profil favorable"
+    },
+    "industrie_4_intermediaire": {
+      "label": "Industrie 4.0 Intermédiaire",
+      "score_min": 50,
+      "score_max": 74,
+      "description": "Automatisation partielle, maintenance préventive, quelques zones de fragilité IT ou opérationnelles.",
+      "couleur": "#3b82f6",
+      "recommandation_souscription": "Conditions avec exigences de prévention ciblées"
+    },
+    "industrie_transition": {
+      "label": "Industrie 3.0 en Transition",
+      "score_min": 30,
+      "score_max": 49,
+      "description": "Automatisation limitée, maintenance corrective dominante, infrastructure IT fragile.",
+      "couleur": "#f59e0b",
+      "recommandation_souscription": "Conditions restrictives — plan d'amélioration obligatoire"
+    },
+    "industrie_traditionnelle": {
+      "label": "Industrie Traditionnelle",
+      "score_min": 0,
+      "score_max": 29,
+      "description": "Faible digitalisation, absence de maintenance prédictive, vulnérabilité systémique critique.",
+      "couleur": "#ef4444",
+      "recommandation_souscription": "Refus ou franchise majorée — audit préalable requis"
+    }
+  },
+
+  "niveaux_risque": {
+    "faible":   { "label": "Risque Faible",   "score_min": 70, "couleur": "#10b981" },
+    "modere":   { "label": "Risque Modéré",   "score_min": 40, "couleur": "#f59e0b" },
+    "eleve":    { "label": "Risque Élevé",    "score_min": 20, "couleur": "#ef4444" },
+    "critique": { "label": "Risque Critique", "score_min": 0,  "couleur": "#7f1d1d" }
+  },
+
+  "protocoles_industriels": {
+    "OPC-UA":   { "securite": "Élevée",  "interoperabilite": "Élevée",  "score_bonus": 8 },
+    "Profinet": { "securite": "Moyenne", "interoperabilite": "Élevée",  "score_bonus": 5 },
+    "Modbus":   { "securite": "Faible",  "interoperabilite": "Moyenne", "score_bonus": 2 },
+    "Autre":    { "securite": "Inconnue","interoperabilite": "Variable","score_bonus": 1 }
+  },
+
+  "types_maintenance": {
+    "Prédictive":  { "efficacite": 0.95, "score_bonus": 30, "description": "IA + capteurs + prévision de défaillance" },
+    "Préventive":  { "efficacite": 0.75, "score_bonus": 18, "description": "Planning régulier, sans données temps réel" },
+    "Corrective":  { "efficacite": 0.40, "score_bonus": 0,  "description": "Réaction post-panne — MTTR élevé" }
+  }
+}

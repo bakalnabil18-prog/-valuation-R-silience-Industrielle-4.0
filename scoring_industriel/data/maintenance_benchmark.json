@@ -1,0 +1,94 @@
+{
+  "version": "2.0",
+  "description": "Benchmarks maintenance industrielle — référence pour scoring comparatif",
+
+  "kpi_globaux": {
+    "mtbf": {
+      "label": "Mean Time Between Failures (heures)",
+      "excellent":   { "seuil": 3000, "label": "Excellent", "score": 15 },
+      "bon":         { "seuil": 2000, "label": "Bon",        "score": 10 },
+      "acceptable":  { "seuil": 1000, "label": "Acceptable", "score": 5 },
+      "insuffisant": { "seuil": 0,    "label": "Insuffisant","score": 0 }
+    },
+    "mttr": {
+      "label": "Mean Time To Repair (heures)",
+      "excellent":   { "seuil_max": 2,    "label": "Excellent",  "score": 12 },
+      "bon":         { "seuil_max": 4,    "label": "Bon",         "score": 8 },
+      "acceptable":  { "seuil_max": 8,    "label": "Acceptable",  "score": 4 },
+      "insuffisant": { "seuil_max": 9999, "label": "Insuffisant", "score": 0 }
+    },
+    "taux_planifie": {
+      "label": "Taux maintenance planifiée (%)",
+      "excellent":   { "seuil": 80, "label": "Excellent", "score": 10 },
+      "bon":         { "seuil": 60, "label": "Bon",        "score": 6 },
+      "insuffisant": { "seuil": 0,  "label": "Insuffisant","score": 0 }
+    },
+    "taux_respect_planning": {
+      "label": "Taux de respect du planning (%)",
+      "excellent":   { "seuil": 90, "label": "Excellent", "score": 8 },
+      "bon":         { "seuil": 70, "label": "Bon",        "score": 4 },
+      "insuffisant": { "seuil": 0,  "label": "Insuffisant","score": 0 }
+    }
+  },
+
+  "niveaux_maturite_maintenance": {
+    "1": {
+      "label": "Niveau 1 — Réactif",
+      "description": "Maintenance uniquement corrective. Pas de planification. MTTR élevé.",
+      "caracteristiques": ["Pas de GMAO", "Pannes fréquentes", "Coûts élevés", "Stock désordonné"],
+      "score": 0
+    },
+    "2": {
+      "label": "Niveau 2 — Préventif basique",
+      "description": "Planification périodique sans données. Calendrier fixe.",
+      "caracteristiques": ["Planning annuel", "Quelques KPI", "GMAO partielle"],
+      "score": 20
+    },
+    "3": {
+      "label": "Niveau 3 — Préventif avancé",
+      "description": "GMAO complète, KPIs suivis, historique analysé.",
+      "caracteristiques": ["GMAO déployée", "KPIs complets", "Retour d'expérience"],
+      "score": 40
+    },
+    "4": {
+      "label": "Niveau 4 — Conditionnel",
+      "description": "Capteurs IoT, maintenance déclenchée par condition réelle.",
+      "caracteristiques": ["Capteurs temps réel", "Seuils d'alerte", "Intervention ciblée"],
+      "score": 65
+    },
+    "5": {
+      "label": "Niveau 5 — Prédictif IA",
+      "description": "IA prédit les pannes avant qu'elles surviennent. MTTR minimal.",
+      "caracteristiques": ["Machine Learning", "Prévision défaillance", "Zéro arrêt non planifié"],
+      "score": 100
+    }
+  },
+
+  "benchmarks_sectoriels": {
+    "automobile":     { "mtbf_ref": 2200, "mttr_ref": 3.5, "taux_plan_ref": 75 },
+    "aeronautique":   { "mtbf_ref": 3500, "mttr_ref": 2.8, "taux_plan_ref": 88 },
+    "agroalimentaire":{ "mtbf_ref": 1800, "mttr_ref": 4.2, "taux_plan_ref": 65 },
+    "chimie_pharma":  { "mtbf_ref": 2800, "mttr_ref": 3.0, "taux_plan_ref": 80 },
+    "metalurgie":     { "mtbf_ref": 1600, "mttr_ref": 5.5, "taux_plan_ref": 60 },
+    "electronique":   { "mtbf_ref": 3000, "mttr_ref": 2.5, "taux_plan_ref": 82 },
+    "textile":        { "mtbf_ref": 1200, "mttr_ref": 6.0, "taux_plan_ref": 55 },
+    "btp":            { "mtbf_ref": 1400, "mttr_ref": 5.0, "taux_plan_ref": 50 },
+    "autre":          { "mtbf_ref": 2000, "mttr_ref": 4.5, "taux_plan_ref": 65 }
+  },
+
+  "types_gmao": {
+    "SAP_PM":     { "score_bonus": 5, "niveau": "Avancé" },
+    "IBM_Maximo": { "score_bonus": 5, "niveau": "Avancé" },
+    "CARL":       { "score_bonus": 4, "niveau": "Intermédiaire" },
+    "Infor_EAM":  { "score_bonus": 4, "niveau": "Intermédiaire" },
+    "Excel":      { "score_bonus": 1, "niveau": "Basique" },
+    "Papier":     { "score_bonus": 0, "niveau": "Aucun" }
+  },
+
+  "impacts_defaillance_maintenance": {
+    "arret_production":       { "cout_heure_moyen_mad": 15000, "description": "Perte directe production" },
+    "bris_machine":           { "cout_moyen_mad": 250000,      "description": "Dommage matériel" },
+    "dommage_electrique":     { "cout_moyen_mad": 80000,       "description": "Dommage équipements électriques" },
+    "perte_exploitation_jour":{ "cout_moyen_mad": 120000,      "description": "Perte journalière exploitation" }
+  }
+}

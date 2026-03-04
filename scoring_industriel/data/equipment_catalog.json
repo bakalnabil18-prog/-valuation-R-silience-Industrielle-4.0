@@ -1,0 +1,181 @@
+{
+  "version": "2.0",
+  "description": "Catalogue équipements industriels 4.0 — valeurs de référence et paramètres de risque",
+
+  "robots_industriels": {
+    "types": {
+      "6 axes": {
+        "description": "Robot polyarticulé polyvalent",
+        "domaines": ["Soudage", "Assemblage", "Manutention", "Palettisation"],
+        "valeur_unitaire_ref_mad": { "min": 300000, "max": 1500000 },
+        "duree_vie_ans": 12,
+        "score_maturite": 15,
+        "criticite": "Élevée"
+      },
+      "5 axes": {
+        "description": "Robot 5 axes — usinage et assemblage",
+        "valeur_unitaire_ref_mad": { "min": 250000, "max": 1200000 },
+        "duree_vie_ans": 12,
+        "score_maturite": 12,
+        "criticite": "Élevée"
+      },
+      "SCARA": {
+        "description": "Robot SCARA — assemblage rapide",
+        "valeur_unitaire_ref_mad": { "min": 80000, "max": 400000 },
+        "duree_vie_ans": 10,
+        "score_maturite": 10,
+        "criticite": "Moyenne"
+      },
+      "Delta": {
+        "description": "Robot Delta — picking haute cadence",
+        "valeur_unitaire_ref_mad": { "min": 60000, "max": 350000 },
+        "duree_vie_ans": 10,
+        "score_maturite": 10,
+        "criticite": "Moyenne"
+      },
+      "Cobot": {
+        "description": "Robot collaboratif — travail humain-robot",
+        "valeur_unitaire_ref_mad": { "min": 120000, "max": 600000 },
+        "duree_vie_ans": 8,
+        "score_maturite": 18,
+        "criticite": "Faible"
+      }
+    },
+    "marques_reference": ["FANUC", "ABB", "KUKA", "Yaskawa", "Universal Robots", "Stäubli", "Kawasaki"],
+    "mtbf_moyen_heures": 50000,
+    "heures_fonct_annuel_typiques": 6000
+  },
+
+  "cnc_usinage": {
+    "types": {
+      "3 axes": {
+        "description": "Centre d'usinage 3 axes standard",
+        "valeur_unitaire_ref_mad": { "min": 150000, "max": 800000 },
+        "duree_vie_ans": 15,
+        "score_maturite": 8,
+        "criticite": "Moyenne"
+      },
+      "5 axes": {
+        "description": "Centre d'usinage 5 axes haute précision",
+        "valeur_unitaire_ref_mad": { "min": 400000, "max": 3000000 },
+        "duree_vie_ans": 15,
+        "score_maturite": 14,
+        "criticite": "Élevée"
+      },
+      "Multi-broche": {
+        "description": "Tour multi-broches haute productivité",
+        "valeur_unitaire_ref_mad": { "min": 500000, "max": 4000000 },
+        "duree_vie_ans": 15,
+        "score_maturite": 12,
+        "criticite": "Élevée"
+      }
+    },
+    "marques_reference": ["DMG Mori", "Mazak", "Haas", "Okuma", "Makino", "Doosan"],
+    "sensibilites_electriques": {
+      "variateurs_frequence": "Protection surtension indispensable",
+      "commandes_cnc": "UPS dédié recommandé",
+      "moteurs_broches": "Séparateur galvanique conseillé"
+    }
+  },
+
+  "systemes_cps": {
+    "scada": {
+      "editeurs_reference": ["Siemens WinCC", "Schneider EcoStruxure", "Rockwell FactoryTalk", "GE iFIX"],
+      "risque_cyber": "Élevé si non patché",
+      "score_bonus": 12
+    },
+    "mes": {
+      "editeurs_reference": ["SAP ME", "Siemens Opcenter", "Dassault Apriso", "Infor CloudSuite"],
+      "integration_erp": true,
+      "score_bonus": 12
+    },
+    "protocoles": {
+      "OPC-UA": { "securite": "Élevée",  "standard": "IEC 62541", "score_bonus": 8 },
+      "Profinet":{ "securite": "Moyenne","standard": "IEC 61158", "score_bonus": 5 },
+      "Modbus":  { "securite": "Faible", "standard": "Modicon",   "score_bonus": 2 }
+    }
+  },
+
+  "infrastructure_electrique": {
+    "composants": {
+      "tableau_bt": {
+        "description": "Tableau Basse Tension intelligent",
+        "score_bonus": 15,
+        "fabricants": ["Schneider", "Legrand", "ABB", "Siemens"]
+      },
+      "tableau_mt": {
+        "description": "Tableau Moyenne Tension",
+        "score_bonus": 18
+      },
+      "ups_industriel": {
+        "description": "Onduleur / UPS industriel",
+        "autonomie_min_min": 15,
+        "score_bonus": 15,
+        "fabricants": ["Eaton", "APC", "Socomec", "Emerson"]
+      },
+      "groupe_electrogene": {
+        "description": "Groupe électrogène de secours",
+        "demarrage_auto": true,
+        "score_bonus": 12
+      },
+      "monitoring_energie": {
+        "description": "Système de monitoring énergétique",
+        "score_bonus": 8
+      }
+    },
+    "seuils_taux_charge": {
+      "optimal":    { "max": 75, "score": 10 },
+      "acceptable": { "max": 90, "score": 5 },
+      "critique":   { "max": 100,"score": -5 }
+    }
+  },
+
+  "manutention_agv": {
+    "types": {
+      "AGV": {
+        "description": "Véhicule à Guidage Automatique",
+        "valeur_ref_mad": { "min": 80000, "max": 400000 },
+        "score_bonus": 20,
+        "impact_mttr": "Réduction estimée 30-40%"
+      },
+      "Chariot_elevateur": {
+        "description": "Chariot élévateur",
+        "valeur_ref_mad": { "min": 30000, "max": 150000 },
+        "score_bonus": 5
+      },
+      "Pont_roulant": {
+        "description": "Pont roulant",
+        "valeur_ref_mad": { "min": 50000, "max": 500000 },
+        "score_bonus": 8
+      },
+      "Palan_electrique": {
+        "description": "Palan électrique",
+        "valeur_ref_mad": { "min": 5000, "max": 50000 },
+        "score_bonus": 4
+      }
+    }
+  },
+
+  "stockage_pieces": {
+    "systemes": {
+      "rayonnage_intelligent": {
+        "description": "Système RFID ou code-barres pour localisation pièces",
+        "score_bonus": 8
+      },
+      "stockage_vertical_auto": {
+        "description": "Carrousel vertical automatisé (Hänel, Kardex)",
+        "score_bonus": 12,
+        "fabricants": ["Hänel", "Kardex", "Modula"]
+      },
+      "magasin_central": {
+        "description": "Magasin centralisé avec zone critique dédiée",
+        "score_bonus": 10
+      }
+    },
+    "indicateurs_performance": {
+      "taux_service_cible": 0.98,
+      "delai_reappro_max_jours": 5,
+      "pct_pieces_crit_min": 0.90
+    }
+  }
+}
